@@ -2,4 +2,5 @@
 <resources>
 	<string name="hello">Hello World, SplashActivity!</string>
 	<string name="app_name">Burger Timer</string>
+
 </resources>

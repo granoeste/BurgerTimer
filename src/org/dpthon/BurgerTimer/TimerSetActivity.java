@@ -8,8 +8,6 @@ import android.view.View;
 
 public class TimerSetActivity extends Activity {
 
-	private final Handler mHandler = new Handler();
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
