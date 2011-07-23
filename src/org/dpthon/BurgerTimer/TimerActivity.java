@@ -1,5 +1,9 @@
 package org.dpthon.BurgerTimer;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 import android.app.Activity;
@@ -47,6 +51,20 @@ public class TimerActivity extends Activity {
 
 	class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback {
 		private Random mRnd = new Random();
+		final int GU[] = {
+				R.drawable.beer, R.drawable.flog, R.drawable.suica,
+				R.drawable.ufo, R.drawable.cherry, R.drawable.fish, R.drawable.takenoko,
+				R.drawable.cheese_a, R.drawable.cheese_a,
+				R.drawable.cheese_b, R.drawable.cheese_b,
+				R.drawable.egg,
+				R.drawable.lettuce, R.drawable.lettuce, R.drawable.lettuce, R.drawable.lettuce, R.drawable.lettuce,
+				R.drawable.meat, R.drawable.meat, R.drawable.meat, R.drawable.meat, R.drawable.meat, R.drawable.meat, R.drawable.meat, R.drawable.meat, R.drawable.meat, R.drawable.meat,
+				R.drawable.pain, R.drawable.pain,
+				R.drawable.tomato, R.drawable.tomato, R.drawable.tomato, R.drawable.tomato, R.drawable.tomato
+				};
+		List<Integer> listGu;
+		int drawableIds[] = new int[16];
+
 		private int mWidth, mHeight;
 		private float mCenterX, mCenterY;
 		private BitmapFactory.Options mOpts;
@@ -59,6 +77,10 @@ public class TimerActivity extends Activity {
 			mOpts.inPurgeable = true;	//メモリ開放
 			mOpts.inPreferredConfig = Bitmap.Config.ARGB_4444;	//16bit
 			mOpts.inTempStorage = new byte[16*1024];
+
+			for (int i=0; i<drawableIds.length;i++) {
+				drawableIds[i] = GU[mRnd.nextInt(GU.length)];
+			}
 
 			// SurfaceHolder の取得
 			SurfaceHolder holder = getHolder();
@@ -126,8 +148,9 @@ public class TimerActivity extends Activity {
 			canvas.drawBitmap(resizedBitmap, 0, 0, paintBitmap);
 
 			// バーガー積み
-			float left = mWidth/2;
-			float top = mHeight-200;
+			//float left = mWidth/2;
+			float top = mHeight-200*scaleHeight;
+			int drawableId;
 			if (cnt >= 1) {
 				bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.buns, mOpts);
 				resizedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
@@ -137,18 +160,136 @@ public class TimerActivity extends Activity {
 				System.out.println(bitmap.getWidth()+":"+bitmap.getHeight());
 			}
 			if (cnt >= 2) {
-				bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.meat, mOpts);
+				drawableId = drawableIds[2-2];
+				bitmap = BitmapFactory.decodeResource(getResources(), drawableId, mOpts);
 				resizedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
 				top = top-bitmap.getHeight()/2*scaleHeight;
 				canvas.drawBitmap(resizedBitmap, mCenterX-bitmap.getWidth()/2*scaleWidth, top, paintBitmap);
 			}
 			if (cnt >= 3) {
-				bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.lettuce, mOpts);
+				drawableId = drawableIds[3-2];
+				bitmap = BitmapFactory.decodeResource(getResources(), drawableId, mOpts);
 				resizedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
 				top = top-bitmap.getHeight()/2*scaleHeight;
 				canvas.drawBitmap(resizedBitmap, mCenterX-bitmap.getWidth()/2*scaleWidth, top, paintBitmap);
 			}
+			if (cnt >= 4) {
+				drawableId = drawableIds[4-2];
+				bitmap = BitmapFactory.decodeResource(getResources(), drawableId, mOpts);
+				resizedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+				top = top-bitmap.getHeight()/2*scaleHeight;
+				canvas.drawBitmap(resizedBitmap, mCenterX-bitmap.getWidth()/2*scaleWidth, top, paintBitmap);
+			}
+			if (cnt >= 5) {
+				drawableId = drawableIds[5-2];
+				bitmap = BitmapFactory.decodeResource(getResources(), drawableId, mOpts);
+				resizedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+				top = top-bitmap.getHeight()/2*scaleHeight;
+				canvas.drawBitmap(resizedBitmap, mCenterX-bitmap.getWidth()/2*scaleWidth, top, paintBitmap);
+			}
+			if (cnt >= 6) {
+				drawableId = drawableIds[6-2];
+				bitmap = BitmapFactory.decodeResource(getResources(), drawableId, mOpts);
+				resizedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+				top = top-bitmap.getHeight()/2*scaleHeight;
+				canvas.drawBitmap(resizedBitmap, mCenterX-bitmap.getWidth()/2*scaleWidth, top, paintBitmap);
+			}
+			if (cnt >= 7) {
+				drawableId = drawableIds[7-2];
+				bitmap = BitmapFactory.decodeResource(getResources(), drawableId, mOpts);
+				resizedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+				top = top-bitmap.getHeight()/2*scaleHeight;
+				canvas.drawBitmap(resizedBitmap, mCenterX-bitmap.getWidth()/2*scaleWidth, top, paintBitmap);
+			}
+			if (cnt >= 8) {
+				drawableId = drawableIds[8-2];
+				bitmap = BitmapFactory.decodeResource(getResources(), drawableId, mOpts);
+				resizedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+				top = top-bitmap.getHeight()/2*scaleHeight;
+				canvas.drawBitmap(resizedBitmap, mCenterX-bitmap.getWidth()/2*scaleWidth, top, paintBitmap);
+			}
+			if (cnt >= 9) {
+				drawableId = drawableIds[9-2];
+				bitmap = BitmapFactory.decodeResource(getResources(), drawableId, mOpts);
+				resizedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+				top = top-bitmap.getHeight()/2*scaleHeight;
+				canvas.drawBitmap(resizedBitmap, mCenterX-bitmap.getWidth()/2*scaleWidth, top, paintBitmap);
+			}
+			if (cnt >= 10) {
+				drawableId = drawableIds[10-2];
+				bitmap = BitmapFactory.decodeResource(getResources(), drawableId, mOpts);
+				resizedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+				top = top-bitmap.getHeight()/2*scaleHeight;
+				if(top > 0)
+				canvas.drawBitmap(resizedBitmap, mCenterX-bitmap.getWidth()/2*scaleWidth, top, paintBitmap);
+			}
+			if (cnt >= 11) {
+				drawableId = drawableIds[11-2];
+				bitmap = BitmapFactory.decodeResource(getResources(), drawableId, mOpts);
+				resizedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+				top = top-bitmap.getHeight()/2*scaleHeight;
+				if(top > 0)
+				canvas.drawBitmap(resizedBitmap, mCenterX-bitmap.getWidth()/2*scaleWidth, top, paintBitmap);
+			}
+			if (cnt >= 12) {
+				drawableId = drawableIds[12-2];
+				bitmap = BitmapFactory.decodeResource(getResources(), drawableId, mOpts);
+				resizedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+				top = top-bitmap.getHeight()/2*scaleHeight;
+				if(top > 0)
+				canvas.drawBitmap(resizedBitmap, mCenterX-bitmap.getWidth()/2*scaleWidth, top, paintBitmap);
+			}
+			if (cnt >= 13) {
+				drawableId = drawableIds[13-2];
+				bitmap = BitmapFactory.decodeResource(getResources(), drawableId, mOpts);
+				resizedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+				top = top-bitmap.getHeight()/2*scaleHeight;
+				if(top > 0)
+				canvas.drawBitmap(resizedBitmap, mCenterX-bitmap.getWidth()/2*scaleWidth, top, paintBitmap);
+			}
+			if (cnt >= 14) {
+				drawableId = drawableIds[14-2];
+				bitmap = BitmapFactory.decodeResource(getResources(), drawableId, mOpts);
+				resizedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+				top = top-bitmap.getHeight()/2*scaleHeight;
+				if(top > 0)
+				canvas.drawBitmap(resizedBitmap, mCenterX-bitmap.getWidth()/2*scaleWidth, top, paintBitmap);
+			}
+			if (cnt >= 15) {
+				drawableId = drawableIds[15-2];
+				bitmap = BitmapFactory.decodeResource(getResources(), drawableId, mOpts);
+				resizedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+				top = top-bitmap.getHeight()/2*scaleHeight;
+				if(top > 0)
+				canvas.drawBitmap(resizedBitmap, mCenterX-bitmap.getWidth()/2*scaleWidth, top, paintBitmap);
+			}
+			if (cnt >= 16) {
+				drawableId = drawableIds[16-2];
+				bitmap = BitmapFactory.decodeResource(getResources(), drawableId, mOpts);
+				resizedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+				top = top-bitmap.getHeight()/2*scaleHeight;
+				if(top > 0)
+				canvas.drawBitmap(resizedBitmap, mCenterX-bitmap.getWidth()/2*scaleWidth, top, paintBitmap);
+			}
+			if (cnt >= 17) {
+				drawableId = drawableIds[17-2];
+				bitmap = BitmapFactory.decodeResource(getResources(), drawableId, mOpts);
+				resizedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+				top = top-bitmap.getHeight()/2*scaleHeight;
+				if(top > 0)
+				canvas.drawBitmap(resizedBitmap, mCenterX-bitmap.getWidth()/2*scaleWidth, top, paintBitmap);
+			}
 
+			if (cnt >= 18) {
+				bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.buns_top, mOpts);
+				resizedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+				top = top-bitmap.getHeight()/2*scaleHeight;
+				if(top > 0)
+					top = 0;
+				canvas.drawBitmap(resizedBitmap, mCenterX-bitmap.getWidth()/2*scaleWidth, 0, paintBitmap);
+//				canvas.drawBitmap(resizedBitmap, mWidth/2-300/2, mHeight-200+15, paintBitmap);
+//				System.out.println(bitmap.getWidth()+":"+bitmap.getHeight());
+			}
 
 			// サンプルテキスト
 			TextPaint textPaint = new TextPaint();
@@ -161,16 +302,25 @@ public class TimerActivity extends Activity {
 			// 現在の状態の変更
 			canvas.restore();
 
-			cnt++;
-
 			if (cnt == 18) {
 				fanfare();
+
+				bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.itstime, mOpts);
+				resizedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+				canvas.drawBitmap(resizedBitmap, mCenterX-bitmap.getWidth()/2*scaleWidth, bitmap.getHeight()/2*scaleHeight, paintBitmap);
+
+				bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.delicious, mOpts);
+				resizedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+				canvas.drawBitmap(resizedBitmap, 0, mCenterY, paintBitmap);
+
 				mHandler.removeCallbacks(mDrawThread);
 			} else {
 				// 次の描画をセット
 				mHandler.removeCallbacks(mDrawThread);
-				mHandler.postDelayed(mDrawThread, 1000);
+				mHandler.postDelayed(mDrawThread, 500);
 			}
+
+			cnt++;
 		}
 
 		private void fanfare() {
